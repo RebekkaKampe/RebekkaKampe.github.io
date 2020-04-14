@@ -365,7 +365,9 @@
                 }
 
                 // Start peer connection on click
-                connectButton.addEventListener('click', join);
+                connectButton.onclick = function(){
+								join(); 
+							};
 
 				
 				var input1 = document.getElementById("fname1");
