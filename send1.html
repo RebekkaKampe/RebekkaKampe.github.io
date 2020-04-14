@@ -233,9 +233,7 @@
 				var rowPointsPlayer1 = 1;
 				var rowPointsPlayer2 = 1; 
 
-                var lastPeerId = null;
-                var peer = null; // own peer object
-                var conn = null;
+                
                 var recvIdInput = document.getElementById("receiver-id");
                 var status = document.getElementById("status");
 
@@ -249,32 +247,11 @@
                  */
                 function initialize() {
                     // Create own peer object with connection to shared PeerJS server
-                    peer = new Peer();
+                    const peer = new Peer();
 
                     peer.on('open', function (id) {
-                        // Workaround for peer.reconnect deleting previous id
-                        if (peer.id === null) {
-                            console.log('Received null id from peer open');
-                            peer.id = lastPeerId;
-                        } else {
-                            lastPeerId = peer.id;
-                        }
 
                         console.log('ID: ' + peer.id);
-                    });
-                    peer.on('disconnected', function () {
-                        status.innerHTML = "Connection lost. Please reconnect";
-                        console.log('Connection lost. Please reconnect');
-
-                        // Workaround for peer.reconnect deleting previous id
-                        peer.id = lastPeerId;
-                        peer._lastServerId = lastPeerId;
-                        peer.reconnect();
-                    });
-                    peer.on('close', function() {
-                        conn = null;
-                        status.innerHTML = "Connection destroyed. Please refresh";
-                        console.log('Connection destroyed');
                     });
                     peer.on('error', function (err) {
                         console.log(err);
@@ -289,15 +266,9 @@
                  * connection and data received on it.
                  */
                 function join() {
-                    // Close old connection
-                    if (conn) {
-                        conn.close();
-                    }
-
+				
                     // Create connection to destination peer specified in the input field
-                    conn = peer.connect(recvIdInput.value, {
-                        reliable: true
-                    });
+				    const conn = peer.connect(recvIdInput.value);
 
                     conn.on('open', function () {
                         document.getElementById("score").removeChild(document.getElementById("login"));
