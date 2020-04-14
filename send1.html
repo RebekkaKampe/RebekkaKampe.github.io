@@ -238,6 +238,7 @@
                 var status = document.getElementById("status");
 
                 var connectButton = document.getElementById("connect-button");
+				const peer = new Peer();
 
                 /**
                  * Create the Peer object for our end of the connection.
@@ -247,7 +248,6 @@
                  */
                 function initialize() {
                     // Create own peer object with connection to shared PeerJS server
-                    const peer = new Peer();
 
                     peer.on('open', function (id) {
 
