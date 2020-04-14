@@ -138,7 +138,7 @@
 </div>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/peerjs@1.2.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
         <script type="text/javascript">
             (function () {
 
@@ -236,6 +236,8 @@
 				
                 var recvId = document.getElementById("receiver-id");
                 var status = document.getElementById("status");
+				
+				const peer = new Peer();
 
 
                 /**
@@ -246,7 +248,7 @@
                  */
                  function initialize() {
                     // Create own peer object with connection to shared PeerJS server
-                    const peer = new Peer();
+                    
 
                     peer.on('open', function (id) {
 
