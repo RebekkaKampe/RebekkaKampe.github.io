@@ -269,7 +269,7 @@
 				
                     // Create connection to destination peer specified in the input field
 					console.log(recvIdInput.value);
-				    const conn = peer.connect(recvIdInput.value);
+				    const conn = peer.connect(""+recvIdInput.value);
 
                     conn.on('open', function () {
                         document.getElementById("score").removeChild(document.getElementById("login"));
