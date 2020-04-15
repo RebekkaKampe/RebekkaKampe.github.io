@@ -237,11 +237,11 @@
                 var recvId = document.getElementById("receiver-id");
                 var status = document.getElementById("status");
 				
-						var peer = new Peer({debug: 3},{
+						var peer = new Peer({debug: 3, 
   config: {'iceServers': [
-   { url: 'stun:stun.l.google.com:19302' }, {url: 'stun:stun.ideasip.com'},
-    { url: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com'}
-  ]} /* Sample servers, please use appropriate ones */
+   { "urls": 'stun:stun.l.google.com:19302' }, {"urls": 'stun:stun.ideasip.com'},
+    { "urls": 'turn:numb.viagenie.ca', "username": 'webrtc@live.com', "credential": 'muazkh', }
+  ]} 
 });
 				var conn; 
 				
