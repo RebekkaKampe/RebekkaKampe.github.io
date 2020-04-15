@@ -238,6 +238,7 @@
                 var status = document.getElementById("status");
 				
 				var peer = new Peer({debug: 3});
+				var conn; 
 
 
                 /**
@@ -257,7 +258,8 @@
                         status.innerHTML = "Awaiting connection...";
                     });
 					
-                    peer.on('connection', function (conn) {
+                    peer.on('connection', function (connection) {
+						conn = connection; 
                         console.log("Connected to: " + conn.peer);
 						document.getElementById("player1").style.visibility = "visible"; 
 						document.getElementById("score").removeChild(document.getElementById("login"));
