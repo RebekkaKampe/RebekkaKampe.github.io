@@ -137,7 +137,7 @@
 		</p> 
 	</div>
 </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
         <script type="text/javascript">
             (function () {
 			
@@ -238,7 +238,7 @@
                 var status = document.getElementById("status");
 
                 var connectButton = document.getElementById("connect-button");
-				const peer = new Peer();
+				var peer = new Peer({debug: 3});
 
                 /**
                  * Create the Peer object for our end of the connection.
@@ -269,7 +269,7 @@
 				
                     // Create connection to destination peer specified in the input field
 					console.log(recvIdInput.value);
-				    const conn = peer.connect(""+recvIdInput.value);
+				    const conn = peer.connect(recvIdInput.value);
 
                     conn.on('open', function () {
 						console.log("Connected to: " + conn.peer);
