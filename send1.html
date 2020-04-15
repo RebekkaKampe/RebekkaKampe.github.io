@@ -270,6 +270,7 @@
 				
                     // Create connection to destination peer specified in the input field
 					console.log(recvIdInput.value);
+				    conn = peer.connect(recvIdInput.value);
 
                     conn.on('open', function () {
 						console.log("Connected to: " + conn.peer);
