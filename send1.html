@@ -239,6 +239,7 @@
 
                 var connectButton = document.getElementById("connect-button");
 				var peer = new Peer({debug: 3});
+				var conn; 
 
                 /**
                  * Create the Peer object for our end of the connection.
@@ -269,7 +270,6 @@
 				
                     // Create connection to destination peer specified in the input field
 					console.log(recvIdInput.value);
-				    const conn = peer.connect(recvIdInput.value);
 
                     conn.on('open', function () {
 						console.log("Connected to: " + conn.peer);
