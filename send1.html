@@ -238,7 +238,8 @@
                 var status = document.getElementById("status");
 
                 var connectButton = document.getElementById("connect-button");
-				var peer = new Peer({debug: 3});
+				var config = { 'iceServers': [{ 'urls': ['stun:stun.l.google.com:19302'] }] };
+				var peer = new Peer({debug: 3},config);
 				var conn; 
 
                 /**
